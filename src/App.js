@@ -68,6 +68,7 @@ function App() {
           closeModalEdit={closeModalEdit}
           showModalEdit={showModalEdit}
           Id={Id}
+          students={students}
         />
       )}
     </div>
