@@ -8,7 +8,7 @@ export default function Body({ students , openModalDelete ,openModalAdd , openMo
       <td>{student.email}</td>
       <td>{student.phone}</td>
       <td className="d-flex">
-        <p className="editStudent" onClick={() => openModalEdit(student.id)}>
+        <p className="editStudent" onClick={() => openModalEdit(student.id ,student.name ,student.birthday,student.email,student.phone)}>
           <i className="fas fa-edit" > </i> Chỉnh sửa
         </p>{" "}
         |

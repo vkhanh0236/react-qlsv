@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 export default function ModalAdd({
   showModalAdd,
@@ -22,6 +22,7 @@ export default function ModalAdd({
     const news = [...students];
     news.unshift(newStudent);
     setStudents(news);
+    closeModalAdd(false)    
   };
   return (
     <div className="modalAdd">
@@ -65,8 +66,8 @@ export default function ModalAdd({
           <Button variant="secondary" onClick={closeModalAdd}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={() => saveProfile()}>
-            Save 
+          <Button variant="primary" disabled={nameInput==="" || birthdayInput==="" || emailInput ==="" || phoneInput ===""} onClick={() => saveProfile()}>
+            Save
           </Button>
         </Modal.Footer>
       </Modal>
