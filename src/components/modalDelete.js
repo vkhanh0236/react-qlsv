@@ -1,31 +1,26 @@
-import { useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 export default function ModalDelete({
-  students,
   setStudents,
   setShowModalDelete,
   Id,
   showModalDelete,
   closeModalDelete,
 }) {
-  const deleteStudent = (id) => {
+  const deleteStudent = async (id) => {
     // setStudents(students.filter((student) => student.id !== id));
-    // setShowModalDelete(false);
+    setShowModalDelete(false);
+    const res = await fetch("http://localhost:3001/users/" + id, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    const newRes = await fetch("http://localhost:3001/users");
+    const newData = await newRes.json();
+    setStudents(newData);
   };
 
-  useEffect(() => {
-    async function deleteUser() {
-      const res = await fetch("http://localhost:3001/users/", {
-        method: "DELETE",
-        header: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      setStudents(students)
-    }
-    deleteUser();
-  }, [students]);
   return (
     <>
       <Modal show={showModalDelete} onHide={closeModalDelete}>

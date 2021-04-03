@@ -1,4 +1,4 @@
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import Body from "./components/Body";
 // import { STUDENTS } from "./mockData";
 import ModalDelete from "./components/modalDelete";
@@ -10,14 +10,14 @@ function App() {
   const [students, setStudents] = useState([]);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [Id, setId] = useState(0);
-  const [name , setName] = useState('')
-  const [birthday , setBirthday] = useState('')
-  const [email , setEmail] = useState('')
-  const [phone , setPhone] = useState('')
+  const [name, setName] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
   const [showModalAdd, setShowModalAdd] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
-  
+
   useEffect(() => {
     async function getUsers() {
       const res = await fetch("http://localhost:3001/users");
@@ -44,7 +44,13 @@ function App() {
   };
 
   // bật tắt modal edit
-  const openModalEdit = (studentId ,studentName ,studentBirthday,studentEmail,studentPhone) => {
+  const openModalEdit = (
+    studentId,
+    studentName,
+    studentBirthday,
+    studentEmail,
+    studentPhone
+  ) => {
     setShowModalEdit(true);
     setId(studentId);
     setName(studentName);
@@ -99,3 +105,6 @@ function App() {
 }
 
 export default App;
+// lấy total count trong sever .
+// sort , paginate .
+// mockaroo .
