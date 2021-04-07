@@ -4,7 +4,7 @@ import Body from "./components/Body";
 import ModalDelete from "./components/modalDelete";
 import ModalAdd from "./components/modalAdd";
 import ModalEdit from "./components/modalEdit";
-
+import Login from "./components/Login" ;
 function App() {
   // const [students, setStudents] = useState([STUDENTS]);
   const [students, setStudents] = useState([]);
@@ -62,7 +62,7 @@ function App() {
     setShowModalEdit(false);
   };
   return (
-    <div>
+    <>
       <Body
         students={students}
         openModalDelete={openModalDelete}
@@ -100,7 +100,7 @@ function App() {
           phone={phone}
         />
       )}
-    </div>
+    </>
   );
 }
 

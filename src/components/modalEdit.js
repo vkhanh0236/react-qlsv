@@ -15,19 +15,38 @@ export default function ModalEdit({
   const [newBirthday, setNewBirthday] = useState(birthday);
   const [newEmail, setNewEmail] = useState(email);
   const [newPhone, setNewPhone] = useState(phone);
-  const saveEdit = (id) => {
-    const newtudents = [...students]
-    for (var i = 0; i < newtudents.length; i++) {
-      if (newtudents[i].id === id) {
-        newtudents[i].name = newName;
-        newtudents[i].birthday = newBirthday;
-        newtudents[i].email = newEmail;
-        newtudents[i].phone = newPhone;
-      }
-      closeModalEdit(false)
-      return (setStudents(newtudents))
-    }
- };
+  const saveEdit = async (id) => {
+    // const newtudents = [...students]
+    // for (var i = 0; i < newtudents.length; i++) {
+    //   if (newtudents[i].id === id) {
+    //     newtudents[i].name = newName;
+    //     newtudents[i].birthday = newBirthday;
+    //     newtudents[i].email = newEmail;
+    //     newtudents[i].phone = newPhone;
+    //   }
+    //   closeModalEdit(false)
+    //   return (setStudents(newtudents))
+    // }
+    const data = {
+      name: newName,
+      birthday: newBirthday,
+      email: newEmail,
+      phone: newPhone,
+    };
+    console.log(id);
+    const res = await fetch("http://localhost:3001/users/" + id, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log(res);
+    const newRes = await fetch("http://localhost:3001/users");
+    const newData = await newRes.json();
+    setStudents(newData);
+  };
   const profile = students.filter((student) => student.id === Id);
   const newww = profile.map((profile) => (
     <Modal.Body key={profile.id}>
@@ -76,7 +95,16 @@ export default function ModalEdit({
           <Button variant="secondary" onClick={closeModalEdit}>
             Close
           </Button>
-          <Button variant="primary" disabled={newName === "" || newBirthday === "" || newEmail === "" || newPhone === ""} onClick={() => saveEdit(Id)}>
+          <Button
+            variant="primary"
+            disabled={
+              newName === "" ||
+              newBirthday === "" ||
+              newEmail === "" ||
+              newPhone === ""
+            }
+            onClick={() => saveEdit(Id)}
+          >
             Save Changes
           </Button>
         </Modal.Footer>
