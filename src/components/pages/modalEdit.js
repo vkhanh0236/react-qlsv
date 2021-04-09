@@ -34,7 +34,7 @@ export default function ModalEdit({
       phone: newPhone,
     };
     console.log(id);
-    const res = await fetch("http://localhost:3001/users/" + id, {
+    const res = await fetch("https://khanhsaodo.herokuapp.com/users/" + id, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -43,7 +43,7 @@ export default function ModalEdit({
       body: JSON.stringify(data),
     });
     console.log(res);
-    const newRes = await fetch("http://localhost:3001/users");
+    const newRes = await fetch("https://khanhsaodo.herokuapp.com/users");
     const newData = await newRes.json();
     setStudents(newData);
   };

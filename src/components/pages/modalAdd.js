@@ -25,7 +25,7 @@ export default function ModalAdd({ showModalAdd, setStudents, closeModalAdd }) {
       email: emailInput,
       phone: phoneInput,
     };
-    const res = await fetch("http://localhost:3001/users", {
+    const res = await fetch("https://khanhsaodo.herokuapp.com/users", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -33,7 +33,7 @@ export default function ModalAdd({ showModalAdd, setStudents, closeModalAdd }) {
       },
       body: JSON.stringify(data),
     });
-    const newRes = await fetch("http://localhost:3001/users");
+    const newRes = await fetch("https://khanhsaodo.herokuapp.com/users");
     const newData = await newRes.json();
     setStudents(newData);
   };

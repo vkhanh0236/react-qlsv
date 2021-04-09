@@ -9,14 +9,14 @@ export default function ModalDelete({
   const deleteStudent = async (id) => {
     // setStudents(students.filter((student) => student.id !== id));
     setShowModalDelete(false);
-    const res = await fetch("http://localhost:3001/users/" + id, {
+    const res = await fetch("https://khanhsaodo.herokuapp.com/users/" + id, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
-    const newRes = await fetch("http://localhost:3001/users");
+    const newRes = await fetch("https://khanhsaodo.herokuapp.com/users");
     const newData = await newRes.json();
     setStudents(newData);
   };
