@@ -33,6 +33,7 @@ export default function ModalAdd({ showModalAdd, setStudents, closeModalAdd }) {
       },
       body: JSON.stringify(data),
     });
+    console.log(res)
     const newRes = await fetch("https://khanhsaodo.herokuapp.com/users");
     const newData = await newRes.json();
     setStudents(newData);

@@ -15,7 +15,9 @@ export default function ModalDelete({
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+
     });
+    console.log(res)
     const newRes = await fetch("https://khanhsaodo.herokuapp.com/users");
     const newData = await newRes.json();
     setStudents(newData);
